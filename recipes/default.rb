@@ -17,3 +17,16 @@ include_recipe "openstack-common"
 include_recipe "openstack-common::logging"
 include_recipe "openstack-ops-database::server"
 
+%w/
+  compute
+  dashboard
+  identity
+  image
+  metering
+  network
+  volume
+/.each do |s|
+  set_database_servers s
+end
+
+include_recipe "openstack-ops-database::openstack-db"

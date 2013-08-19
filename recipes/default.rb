@@ -11,6 +11,9 @@ class Chef::Recipe
   include KTCUtils
 end
 
+d = { "ip"=>get_interface("management"), "port"=>"3306"}
+register_service("mysql-db", d)
+
 node.default["openstack"]["db"]["bind_interface"] = get_interface("management")
 
 include_recipe "openstack-common"

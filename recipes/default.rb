@@ -11,6 +11,11 @@ class Chef::Recipe
   include KTCUtils
 end
 
+gem_package "etcd"
+
+d = get_openstack_service_template(get_interface_address("management"), "3306")
+register_service("mysql-db", d)
+
 node.default["openstack"]["db"]["bind_interface"] = get_interface("management")
 
 include_recipe "openstack-common"

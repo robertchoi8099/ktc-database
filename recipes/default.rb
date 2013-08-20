@@ -14,7 +14,7 @@ end
 gem_package "etcd"
 
 d = get_openstack_service_template(get_interface_address("management"), "3306")
-register_service("mysql-db", d)
+register_member("mysql", d)
 
 node.default["openstack"]["db"]["bind_interface"] = get_interface("management")
 

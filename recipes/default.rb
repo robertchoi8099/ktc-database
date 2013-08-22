@@ -13,7 +13,8 @@ end
 
 gem_package "etcd"
 
-d = get_openstack_service_template(get_interface_address("management"), "3306")
+ip = get_interface_address("management")
+d = get_openstack_service_template(ip, "3306")
 register_member("mysql", d)
 
 node.default["openstack"]["db"]["bind_interface"] = get_interface("management")
@@ -31,7 +32,7 @@ include_recipe "openstack-ops-database::server"
   network
   volume
 /.each do |s|
-  set_database_servers s
+  node.default["openstack"]["db"][s]["host"] = ip
 end
 
 include_recipe "openstack-ops-database::openstack-db"

@@ -11,8 +11,6 @@ class Chef::Recipe
   include KTCUtils
 end
 
-gem_package "etcd"
-
 ip = get_interface_address("management")
 d = get_openstack_service_template(ip, "3306")
 register_member("mysql", d)

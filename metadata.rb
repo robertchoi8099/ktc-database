@@ -10,10 +10,7 @@ version          '0.1.0'
   supports os
 end
 
-%w{
-  ktc-utils
-  openstack-common
-  openstack-ops-database
-}.each do |dep|
-  depends dep
-end
+depends "ktc-utils", "~> 0.3.1"
+depends "openstack-common", "~> 0.4.3"
+depends "openstack-ops-database", "~> 7.0.0"
+depends "services", "~> 1.0.6"

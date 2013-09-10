@@ -7,15 +7,22 @@
 # All rights reserved - Do Not Redistribute
 #
 
-class Chef::Recipe
-  include KTCUtils
-end
+include_recipe "services"
+include_recipe "ktc-utils"
 
-ip = get_interface_address("management")
-d = get_openstack_service_template(ip, "3306")
-register_member("mysql", d)
+iface = KTC::Network.if_lookup "management"
+ip = KTC::Network.address "management"
 
-node.default["openstack"]["db"]["bind_interface"] = get_interface("management")
+Services::Connection.new run_context: run_context
+member = Services::Member.new node.fqdn,
+  service: "mysql",
+  port: 3306,
+  proto: "tcp",
+  ip: ip
+
+member.save
+
+node.default["openstack"]["db"]["bind_interface"] = iface
 
 include_recipe "openstack-common"
 include_recipe "openstack-common::logging"

@@ -17,6 +17,7 @@ cookbook "openstack-metering", github: "stackforge/cookbook-openstack-metering"
 cookbook "openstack-network", github: "stackforge/cookbook-openstack-network"
 cookbook 'openstack-ops-database', github: 'stackforge/cookbook-openstack-ops-database'
 cookbook 'services', github: 'spheromak/services-cookbook'
+cookbook 'yum', github: 'spheromak/yum', branch: 'integration'
 
 group :integration do
   cookbook 'curl'

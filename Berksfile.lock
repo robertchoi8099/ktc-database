@@ -6,17 +6,17 @@
     "ktc-etcd": {
       "locked_version": "1.1.4",
       "git": "git://github.com/cloudware-cookbooks/ktc-etcd.git",
-      "ref": "6daab4a5eee14842e818ba30cc6bc9c88d61fe32"
+      "ref": "85ff6bf8451dec06dae181edecb594e0a85c4df3"
     },
     "ktc-utils": {
-      "locked_version": "0.3.1",
+      "locked_version": "0.3.2",
       "git": "git://github.com/cloudware-cookbooks/ktc-utils.git",
-      "ref": "c8315777e72e05779bb96d8775c0804519ec0e13"
+      "ref": "954203349653b3f26d0012e85d559a50d0279d82"
     },
     "openstack-block-storage": {
-      "locked_version": "7.0.1",
+      "locked_version": "7.0.3",
       "git": "git://github.com/stackforge/cookbook-openstack-block-storage.git",
-      "ref": "a5cff83f5c527ebb164f118e9312142738a15bee"
+      "ref": "bc00347db1b4e12caca5ccb21b1ec93237637d5c"
     },
     "openstack-common": {
       "locked_version": "0.4.3",
@@ -36,22 +36,22 @@
     "openstack-identity": {
       "locked_version": "7.0.0",
       "git": "git://github.com/stackforge/cookbook-openstack-identity.git",
-      "ref": "b881af26095cfa869a6970067c49597a0ee63586"
+      "ref": "f276a92eac9a781845147b0af71d627a60b75da6"
     },
     "openstack-image": {
       "locked_version": "7.0.0",
       "git": "git://github.com/stackforge/cookbook-openstack-image.git",
-      "ref": "722a973a09ef7c2d58ac010cd0659ca48a81c266"
+      "ref": "b42df8e3bcbec626d0691f7c84c9166c7d2c890c"
     },
     "openstack-metering": {
-      "locked_version": "7.0.3",
+      "locked_version": "7.0.4",
       "git": "git://github.com/stackforge/cookbook-openstack-metering.git",
-      "ref": "7a7926e6b472d48d02863ac6918921100862ca99"
+      "ref": "6ba0451ca2c66562fe6c40db053312c05ef03b15"
     },
     "openstack-network": {
       "locked_version": "7.0.0",
       "git": "git://github.com/stackforge/cookbook-openstack-network.git",
-      "ref": "45954b707295a1a1de0b5abc7fafd4d9bd8741c8"
+      "ref": "e3486bc67ba96e9fc260aabc2fda3712c55e591e"
     },
     "openstack-ops-database": {
       "locked_version": "7.0.0",
@@ -59,9 +59,14 @@
       "ref": "cf8e48039bef2a6ff3a8215cd5a79d8193d6cefd"
     },
     "services": {
-      "locked_version": "1.0.6",
+      "locked_version": "1.0.7",
       "git": "git://github.com/spheromak/services-cookbook.git",
-      "ref": "6ce7c7f76081a5d4d742adee58a94acf94137cac"
+      "ref": "e8cae8b3e1efeee92dc5e15d322086eb1c07c0b2"
+    },
+    "yum": {
+      "locked_version": "2.3.1",
+      "git": "git://github.com/spheromak/yum.git",
+      "ref": "8c3b6099c45b7f522b96f1a417e9bb9fa3d65b5b"
     },
     "curl": {
       "locked_version": "1.1.0"
@@ -75,6 +80,9 @@
     "ark": {
       "locked_version": "0.3.2"
     },
+    "partial_search": {
+      "locked_version": "1.0.2"
+    },
     "apt": {
       "locked_version": "2.1.1"
     },
@@ -86,9 +94,6 @@
     },
     "build-essential": {
       "locked_version": "1.4.2"
-    },
-    "yum": {
-      "locked_version": "2.3.2"
     },
     "database": {
       "locked_version": "1.4.0"

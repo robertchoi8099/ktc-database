@@ -30,7 +30,7 @@ include_recipe "openstack-common::logging"
 if node[:ha_disabled]
   include_recipe "openstack-ops-database::server"
 else
-  include_recipe "ktc-database::galera"
+  include_recipe "galera::server"
 end
 
 %w/

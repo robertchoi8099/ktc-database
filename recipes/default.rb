@@ -9,7 +9,6 @@
 
 include_recipe "services"
 include_recipe "ktc-utils"
-include_recipe "simple_iptables::default"
 
 iface = KTC::Network.if_lookup "management"
 ip = KTC::Network.address "management"
@@ -22,23 +21,7 @@ member = Services::Member.new node.fqdn,
   ip: ip
 member.save
 
-ep = Services::Endpoint.new "mysql"
-ep.load
-
-log "Loaded endpoint #{ep.inspect}"
-
-if ep.ip.empty?
-  log "Endpoint missing IP attribute, moving on"
-  raise
-end
-
-# redirect VIP address to local realserver (DIRECT ROUTE)
-simple_iptables_rule "mysql-direct-route" do
-  table "nat"
-  direction "PREROUTING"
-  rule "-p tcp -d #{ep.ip} --dport 3306 -j REDIRECT"
-  jump false
-end
+KTC::Network.add_service_nat "mysql", 3306
 
 node.default["openstack"]["db"]["bind_interface"] = iface
 

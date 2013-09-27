@@ -3,6 +3,11 @@
     "ktc-database": {
       "path": "."
     },
+    "galera": {
+      "locked_version": "0.4.1",
+      "git": "git://github.com/cloudware-cookbooks/galera.git",
+      "ref": "23255a76218f2069ff85d48ddc8eb8971dd07ba0"
+    },
     "ktc-etcd": {
       "locked_version": "1.1.4",
       "git": "git://github.com/cloudware-cookbooks/ktc-etcd.git",
@@ -11,7 +16,7 @@
     "ktc-utils": {
       "locked_version": "0.3.2",
       "git": "git://github.com/cloudware-cookbooks/ktc-utils.git",
-      "ref": "954203349653b3f26d0012e85d559a50d0279d82"
+      "ref": "2ee6a15c28bd23ae7eff809060374e9d7412c733"
     },
     "openstack-block-storage": {
       "locked_version": "7.0.3",
@@ -59,9 +64,9 @@
       "ref": "cf8e48039bef2a6ff3a8215cd5a79d8193d6cefd"
     },
     "services": {
-      "locked_version": "1.0.7",
+      "locked_version": "1.0.9",
       "git": "git://github.com/spheromak/services-cookbook.git",
-      "ref": "e8cae8b3e1efeee92dc5e15d322086eb1c07c0b2"
+      "ref": "02c892eea3896a532394af24f3ab1f146a3f4a16"
     },
     "yum": {
       "locked_version": "2.3.1",

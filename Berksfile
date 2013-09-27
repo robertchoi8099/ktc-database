@@ -5,6 +5,7 @@ site :opscode
 
 metadata
 
+cookbook 'galera', github: 'cloudware-cookbooks/galera', branch: 'develop'
 cookbook 'ktc-etcd', github: 'cloudware-cookbooks/ktc-etcd', branch: 'develop'
 cookbook 'ktc-utils', github: 'cloudware-cookbooks/ktc-utils', branch: 'develop'
 cookbook 'openstack-block-storage', github: 'stackforge/cookbook-openstack-block-storage'

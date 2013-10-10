@@ -19,14 +19,18 @@ member = Services::Member.new node.fqdn,
   port: 3306,
   proto: "tcp",
   ip: ip
-
 member.save
 
 node.default["openstack"]["db"]["bind_interface"] = iface
 
 include_recipe "openstack-common"
 include_recipe "openstack-common::logging"
-include_recipe "openstack-ops-database::server"
+
+if node[:ha_disabled]
+  include_recipe "openstack-ops-database::server"
+else
+  include_recipe "galera::server"
+end
 
 %w/
   compute

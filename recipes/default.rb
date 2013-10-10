@@ -21,8 +21,6 @@ member = Services::Member.new node.fqdn,
   ip: ip
 member.save
 
-KTC::Network.add_service_nat "mysql", 3306
-
 node.default["openstack"]["db"]["bind_interface"] = iface
 
 include_recipe "openstack-common"

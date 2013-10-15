@@ -1,25 +1,12 @@
 #
 # vim: set ft=ruby:
 #
+
+chef_api "https://chefdev.mkd2.ktc", node_name: "cookbook", client_key: ".cookbook.pem"
+
 site :opscode
 
 metadata
 
-cookbook 'galera', github: 'cloudware-cookbooks/galera', branch: 'develop'
-cookbook 'ktc-etcd', github: 'cloudware-cookbooks/ktc-etcd', branch: 'develop'
-cookbook 'ktc-utils', github: 'cloudware-cookbooks/ktc-utils', branch: 'develop'
-cookbook 'openstack-block-storage', github: 'stackforge/cookbook-openstack-block-storage'
-cookbook "openstack-common", github: "stackforge/cookbook-openstack-common"
-cookbook "openstack-compute", github: "stackforge/cookbook-openstack-compute"
-cookbook "openstack-dashboard", github: "stackforge/cookbook-openstack-dashboard"
-cookbook "openstack-identity", github: "stackforge/cookbook-openstack-identity"
-cookbook "openstack-image", github: "stackforge/cookbook-openstack-image"
-cookbook "openstack-metering", github: "stackforge/cookbook-openstack-metering"
-cookbook "openstack-network", github: "stackforge/cookbook-openstack-network"
-cookbook 'openstack-ops-database', github: 'stackforge/cookbook-openstack-ops-database'
-cookbook 'services', github: 'spheromak/services-cookbook'
-cookbook 'yum', github: 'spheromak/yum', branch: 'integration'
-
-group :integration do
-  cookbook "ktc-testing", github: "cloudware-cookbooks/ktc-testing"
-end
+cookbook 'ktc-etcd'
+cookbook "ktc-testing"

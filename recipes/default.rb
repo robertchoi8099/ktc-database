@@ -7,16 +7,42 @@
 # All rights reserved - Do Not Redistribute
 #
 
-class Chef::Recipe
-  include KTCUtils
-end
+include_recipe "services"
+include_recipe "ktc-utils"
 
-d = { "ip"=>get_interface("management"), "port"=>"3306"}
-register_service("mysql-db", d)
+iface = KTC::Network.if_lookup "management"
+ip = KTC::Network.address "management"
 
-node.default["openstack"]["db"]["bind_interface"] = get_interface("management")
+Services::Connection.new run_context: run_context
+member = Services::Member.new node.fqdn,
+  service: "mysql",
+  port: 3306,
+  proto: "tcp",
+  ip: ip
+member.save
+
+node.default["openstack"]["db"]["bind_interface"] = iface
 
 include_recipe "openstack-common"
 include_recipe "openstack-common::logging"
-include_recipe "openstack-ops-database::server"
 
+if node[:ha_disabled]
+  include_recipe "openstack-ops-database::server"
+else
+  include_recipe "ktc-openstack-ha::mysql"
+  include_recipe "galera::server"
+end
+
+%w/
+  compute
+  dashboard
+  identity
+  image
+  metering
+  network
+  volume
+/.each do |s|
+  node.default["openstack"]["db"][s]["host"] = ip
+end
+
+include_recipe "openstack-ops-database::openstack-db"

@@ -14,7 +14,7 @@ iface = KTC::Network.if_lookup "management"
 ip = KTC::Network.address "management"
 
 Services::Connection.new run_context: run_context
-member = Services::Member.new node.fqdn,
+member = Services::Member.new node['fqdn'],
   service: "mysql",
   port: 3306,
   proto: "tcp",
@@ -26,7 +26,7 @@ node.default["openstack"]["db"]["bind_interface"] = iface
 include_recipe "openstack-common"
 include_recipe "openstack-common::logging"
 
-if node[:ha_disabled]
+if node['ha_disabled']
   include_recipe "openstack-ops-database::server"
 else
   include_recipe "ktc-openstack-ha::mysql"

@@ -15,9 +15,3 @@ Encoding:
   Exclude:
     - metadata.rb
     - Gemfile
-
-LineLength:
-  Enabled:  true
-
-WordArray:
-  MinSize: 3

@@ -13,13 +13,23 @@ include_recipe 'ktc-utils'
 iface = KTC::Network.if_lookup 'management'
 ip = KTC::Network.address 'management'
 
-Services::Connection.new run_context: run_context
-member = Services::Member.new node['fqdn'],
-                              service: 'mysql',
-                              port: 3306,
-                              proto: 'tcp',
-                              ip: ip
-member.save
+ruby_block 'register mysql endpoint' do
+  block do
+    Services::Connection.new run_context: run_context
+
+    member = Services::Member.new node['fqdn'],
+                                  service: 'mysql',
+                                  port: 3306,
+                                  proto: 'tcp',
+                                  ip: ip
+    member.save
+
+    ep = Services::Endpoint.new 'mysql',
+                                ip: ip,
+                                port: 3306
+    ep.save
+  end
+end
 
 node.default['openstack']['db']['bind_interface'] = iface
 
@@ -33,7 +43,7 @@ else
   include_recipe 'galera::server'
 end
 
-%w/
+%w(
   compute
   dashboard
   identity
@@ -41,7 +51,7 @@ end
   metering
   network
   volume
-/.each do |s|
+).each do |s|
   node.default['openstack']['db'][s]['host'] = ip
 end
 
